@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaCog, FaSignOutAlt } from 'react-icons/fa';
-import { IoIosArrowDropdownCircle } from 'react-icons/io';
+import { ChevronDown, LogOut, Settings, UserCircle2 } from 'lucide-react';
 import axios from 'axios';
 import SubMenu from './Submenu';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
@@ -88,11 +87,11 @@ const Sidebar = ({ isSidebarVisible }) => {
 
   return (
     <>
-      <nav className={`bg-[#f2f2f2] w-[240px] min-h-screen h-full z-20 flex flex-col fixed top-0 transition-transform duration-300 ${sidebar ? 'translate-x-0' : '-translate-x-full'} shadow-md navbar-container lg:w-[260px]`}>
+      <nav className={`bg-white w-64 h-screen z-20 flex flex-col fixed top-0 transition-transform duration-300 ${sidebar ? 'translate-x-0' : '-translate-x-full'} shadow-sm border-r border-gray-100 navbar-container`}>
         {/* Main Sidebar Logo and Name */}
-        <div className="flex items-center px-4 py-6 gap-3 bg-blue-50">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-emerald-500 shadow-md" />
-          <h1 className="text-2xl font-bold text-white">
+        <div className="flex items-center px-4 py-4 gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gray-900" />
+          <h1 className="text-lg font-semibold text-gray-900 truncate">
             {loadData.role === 'superuser' && <Link to="/admin/dashboard" className="no-underline text-black">Placement Portal</Link>}
             {loadData.role === 'management_admin' && <Link to="/management/dashboard" className="no-underline text-black">Placement Portal</Link>}
             {loadData.role === 'tpo_admin' && <Link to="/tpo/dashboard" className="no-underline text-black">Placement Portal</Link>}
@@ -101,7 +100,7 @@ const Sidebar = ({ isSidebarVisible }) => {
         </div>
 
         {/* Main body */}
-        <div className="flex-grow overflow-y-auto sidebar-content pb-24">
+        <div className="flex-1 min-h-0 overflow-y-auto sidebar-content">
           <div className="flex flex-col justify-center w-full">
             {SidebarData.length > 0 ? (
               SidebarData.map((item, index) => (
@@ -114,45 +113,41 @@ const Sidebar = ({ isSidebarVisible }) => {
         </div>
 
         {/* Bottom Menu */}
-        <div className="bottom-0 absolute w-full transition-all duration-300">
+        <div className="shrink-0 border-t border-gray-100">
           {/* Dropdown Menu */}
           {dropdownOpen && (
-            <div className={`w-full rounded-t-md bg-blue-200 ${dropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-5'}`}>
+            <div className="w-full">
               {/* Conditional rendering based on role */}
               {loadData.role === 'student' && (
-                <Link to={`../student/account`} className="flex items-center rounded-t-md no-underline text-black p-3 hover:bg-blue-300">
-                  <FaCog className="mr-2" /> <span>Account Details</span>
+                <Link to={`../student/account`} className="flex items-center no-underline text-gray-700 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                  <Settings size={16} className="mr-2" /> <span>Account Details</span>
                 </Link>
               )}
               {loadData.role === 'tpo_admin' && (
-                <Link to={`../tpo/account`} className="flex items-center rounded-t-md no-underline text-black p-3 hover:bg-blue-300">
-                  <FaCog className="mr-2" /> <span>Account Details</span>
+                <Link to={`../tpo/account`} className="flex items-center no-underline text-gray-700 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                  <Settings size={16} className="mr-2" /> <span>Account Details</span>
                 </Link>
               )}
               {loadData.role === 'management_admin' && (
-                <Link to={`../management/account`} className="flex items-center rounded-t-md no-underline text-black p-3 hover:bg-blue-300">
-                  <FaCog className="mr-2" /> <span>Account Details</span>
+                <Link to={`../management/account`} className="flex items-center no-underline text-gray-700 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                  <Settings size={16} className="mr-2" /> <span>Account Details</span>
                 </Link>
               )}
-              <button onClick={handleLogout} className="flex items-center rounded-t-md w-full p-3 text-red-700 hover:bg-blue-300">
-                <FaSignOutAlt className="mr-2" /> Logout
+              <button onClick={handleLogout} className="flex items-center w-full px-4 py-3 text-red-700 hover:bg-red-50 active:bg-red-100 transition-colors">
+                <LogOut size={16} className="mr-2" /> Logout
               </button>
             </div>
           )}
 
           {/* User Profile */}
-          <div className="flex justify-center items-center cursor-pointer bg-blue-100" onClick={toggleDropdown}>
-            <img src={loadData.profile} alt="Profile Img" width="45px" className="mx-2 my-2 rounded-2xl transition-all duration-300 shadow-md" />
-            <div className="w-full">
-              <div className="flex flex-col justify-center py-1">
-                <h2 className="text-base font-semibold">{loadData.name}</h2>
-                <p className="text-sm text-gray-600">{loadData.email}</p>
-              </div>
+          <button type="button" className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors" onClick={toggleDropdown}>
+            <UserCircle2 size={36} className="text-gray-400 shrink-0" />
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-gray-900 truncate">{loadData.name}</div>
+              <div className="text-xs text-gray-500 truncate">{loadData.email}</div>
             </div>
-            <div className="px-1">
-              <IoIosArrowDropdownCircle size={24} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
-            </div>
-          </div>
+            <ChevronDown size={18} className={`text-gray-500 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
+          </button>
         </div>
       </nav>
     </>

@@ -97,13 +97,17 @@ function Layout({ header }) {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex h-screen flex-col overflow-hidden">
         <Navbar isSidebarVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
-        <div className="flex flex-grow">
+        <div className="flex flex-1 overflow-hidden">
           <Sidebar isSidebarVisible={isSidebarVisible} />
-          <div className={`content flex-grow p-4 transition-all duration-300 ${isSidebarVisible ? 'md:ml-64' : 'ml-0'} overflow-hidden`}>
-            <BreadcrumbExp header={header} />
-            <Outlet />
+          <div className={`content flex min-w-0 flex-1 flex-col transition-all duration-300 ${isSidebarVisible ? 'md:ml-64' : 'ml-0'} overflow-hidden`}>
+            <div className="shrink-0 p-4">
+              <BreadcrumbExp header={header} />
+            </div>
+            <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-6">
+              <Outlet />
+            </div>
           </div>
         </div>
         <Footer isSidebarVisible={isSidebarVisible} />

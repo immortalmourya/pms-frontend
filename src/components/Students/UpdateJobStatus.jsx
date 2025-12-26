@@ -8,8 +8,7 @@ import { Button } from 'react-bootstrap';
 import UploadOfferLetter from './UploadOfferLetter';
 import Toast from '../Toast';
 import ModalBox from '../Modal';
-import { LiaEye } from "react-icons/lia";
-import { PiEyeClosed } from "react-icons/pi";
+import { Eye, EyeOff } from 'lucide-react';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function UpdateJobStatus() {
@@ -361,20 +360,20 @@ function UpdateJobStatus() {
                               applicant?.offerLetter &&
                               <div className="cursor-pointer w-fit flex gap-1 justify-between items-center">
                                 <span
-                                  className='bg-blue-500 px-3 py-1 rounded transition duration-300 ease-in-out hover:bg-blue-700'
+                                  className='bg-gray-900 px-3 py-1 rounded-md transition-colors duration-200 hover:bg-gray-800 active:bg-gray-900'
                                   onMouseEnter={() => setEyeIsHover(true)}
                                   onMouseLeave={() => setEyeIsHover(false)}
                                 >
                                   <a
-                                    className='text-white no-underline flex justify-center items-center'
+                                    className='text-white no-underline inline-flex items-center gap-2'
                                     target="_blanck"
                                     href={BASE_URL + applicant?.offerLetter}
                                   >
                                     {
                                       eyeIsHover ? (
-                                        <PiEyeClosed className='pr-2 text-3xl' />
+                                        <EyeOff size={18} />
                                       ) : (
-                                        <LiaEye className='pr-2 text-3xl' />
+                                        <Eye size={18} />
                                       )
                                     }
                                     View Now
@@ -382,7 +381,7 @@ function UpdateJobStatus() {
                                 </span>
                                 {/* delete offer letter  */}
                                 <span
-                                  className='text-white bg-red-500 px-3 py-1 rounded transition-all duration-200 hover:bg-red-700'
+                                  className='text-white bg-red-600 px-3 py-1 rounded-md transition-colors duration-200 hover:bg-red-700 active:bg-red-800'
                                   onClick={handleDelete}
                                   onMouseEnter={(e) => {
                                     const icon = e.target.querySelector('i');

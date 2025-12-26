@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { FaRegSave } from 'react-icons/fa';
-import { RiKeyFill } from "react-icons/ri";
-import { FaMapLocationDot } from "react-icons/fa6";
+import { KeyRound, MapPin, Save, UserCircle2 } from 'lucide-react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Toast from './Toast';
@@ -273,9 +271,9 @@ function Account() {
                     </div>
                     <button
                       type="submit"
-                      className="flex items-center my-2 px-3 py-2 bg-blue-500 text-white rounded"
+                      className="inline-flex items-center gap-2 my-2 px-3 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 active:bg-gray-900 transition-colors"
                     >
-                      <FaRegSave className="mr-2" />
+                      <Save size={16} />
                       Save
                     </button>
                   </Form>
@@ -332,9 +330,9 @@ function Account() {
                     </div>
                     <button
                       type="submit"
-                      className="flex items-center my-2 px-3 py-2 bg-blue-500 text-white rounded"
+                      className="inline-flex items-center gap-2 my-2 px-3 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 active:bg-gray-900 transition-colors"
                     >
-                      <FaMapLocationDot className="mr-2" />
+                      <MapPin size={16} />
                       Change Address
                     </button>
                   </Form>
@@ -344,7 +342,9 @@ function Account() {
                 <div className="bg-white p-6 rounded-lg shadow-md w-full max-sm:col-span-2">
                   <div className="">
                     <Form className='flex flex-col justify-center items-center gap-3 text-center'>
-                      <img src={data.profile} alt="Profile Img" width="150" height="150" className='rounded-full' />
+                      <div className="w-[150px] h-[150px] rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                        <UserCircle2 size={72} />
+                      </div>
                       <Form.Group controlId="formFile" className="mb-3 text-xl" onChange={handlePhotoChange}>
                         <Form.Label>{data.first_name + " " + data.middle_name + " " + data.last_name}</Form.Label>
                         <Form.Control type="file" accept=".jpg, .jpeg, .png" />
@@ -397,9 +397,9 @@ function Account() {
                     }
                     <button
                       type="submit"
-                      className="flex items-center my-2 px-3 py-2 bg-blue-500 text-white rounded"
+                      className="inline-flex items-center gap-2 my-2 px-3 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 active:bg-gray-900 transition-colors"
                     >
-                      <RiKeyFill className="mr-2" />
+                      <KeyRound size={16} />
                       Change Password
                     </button>
                   </Form>

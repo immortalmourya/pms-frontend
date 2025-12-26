@@ -1,122 +1,126 @@
 import React from "react";
-import { FaCheckSquare, FaUsers } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
-import { GrUserManager, GrUserWorker } from "react-icons/gr";
-import { FaListUl } from "react-icons/fa";
-import { RiArrowDownSFill, RiArrowUpSFill, RiPlayListAddLine } from "react-icons/ri";
-import { PiStudentDuotone } from "react-icons/pi";
-import { FaClipboardCheck, FaIndustry, FaEnvelopeOpenText } from "react-icons/fa";
-import { LiaIndustrySolid } from "react-icons/lia";
-import { FaUserSecret } from "react-icons/fa";
+import {
+  Building2,
+  ChevronDown,
+  ChevronUp,
+  ClipboardCheck,
+  Factory,
+  Home,
+  List,
+  Plus,
+  Shield,
+  UserCog,
+  Users,
+} from "lucide-react";
 
 export const SidebarData = [
   {
     title: "Dashboard",
     path: "/admin/dashboard",
-    icon: <AiFillHome />
+    icon: <Home size={18} />
   },
   {
     title: "Management",
-    icon: <FaUserSecret />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Shield size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
     subNav: [
       {
         title: "List All",
         path: "/admin/management",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/admin/add-management-admin",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
         cName: "sub-nav",
       },
     ],
   },
   {
     title: "TPO",
-    icon: <GrUserWorker />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <UserCog size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
     subNav: [
       {
         title: "List All",
         path: "/admin/tpo",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/admin/add-tpo-admin",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
         cName: "sub-nav",
       },
     ],
   },
   {
     title: "Student",
-    icon: <PiStudentDuotone />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Users size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
     subNav: [
       {
         title: "List All",
         path: "/admin/student",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Approve",
         path: "/admin/approve-student",
-        icon: <FaClipboardCheck />,
+        icon: <ClipboardCheck size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/admin/add-student",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
         cName: "sub-nav",
       },
     ],
   },
   {
     title: "Company",
-    icon: <LiaIndustrySolid />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Building2 size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
     subNav: [
       {
         title: "List All",
         path: "/admin/companys",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/admin/add-company",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
       },
     ],
   },
   {
     title: "Job Listings",
-    icon: <FaIndustry />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Factory size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
 
     subNav: [
       {
         title: "List All",
         path: "/admin/job-listings",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/admin/post-job",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
       },
     ],
   },

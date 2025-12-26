@@ -1,117 +1,122 @@
 // Filename - components/SidebarData.js
 
 import React from "react";
-import { FaListUl } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
-import { RiArrowDownSFill, RiArrowUpSFill, RiPlayListAddLine } from "react-icons/ri";
-import { PiStudentDuotone } from "react-icons/pi";
-import { FaClipboardCheck, FaIndustry, FaEnvelopeOpenText } from "react-icons/fa";
-import { GrUserWorker } from "react-icons/gr";
-import { LiaIndustrySolid } from "react-icons/lia";
+import {
+  Building2,
+  ChevronDown,
+  ChevronUp,
+  ClipboardCheck,
+  Factory,
+  Home,
+  List,
+  Mail,
+  Plus,
+  Users,
+} from "lucide-react";
 
 export const SidebarData = [
   {
     title: "Dashboard",
     path: "/management/dashboard",
-    icon: <AiFillHome />
+    icon: <Home size={18} />
   },
   {
     title: "Students",
-    icon: <PiStudentDuotone />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Users size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
     subNav: [
       {
         title: "List All",
         path: "/management/students",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Approve",
         path: "/management/approve-student",
-        icon: <FaClipboardCheck />,
+        icon: <ClipboardCheck size={16} />,
         cName: "sub-nav",
       },
     ],
   },
   {
     title: "TPO",
-    icon: <GrUserWorker />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Users size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
 
     subNav: [
       {
         title: "List All",
         path: "/management/tpo-admin",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/management/add-tpo-admin",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
         cName: "sub-nav",
       },
     ],
   },
   {
     title: "Company",
-    icon: <LiaIndustrySolid />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Building2 size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
     subNav: [
       {
         title: "List All",
         path: "/management/companys",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/management/add-company",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
       },
     ],
   },
   {
     title: "Job Listings",
-    icon: <FaIndustry />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Factory size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
 
     subNav: [
       {
         title: "List All",
         path: "/management/job-listings",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Add New",
         path: "/management/post-job",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
       },
     ],
   },
   {
     title: "Notice",
-    icon: <FaEnvelopeOpenText />,
-    iconClosed: <RiArrowDownSFill />,
-    iconOpened: <RiArrowUpSFill />,
+    icon: <Mail size={18} />,
+    iconClosed: <ChevronDown size={18} />,
+    iconOpened: <ChevronUp size={18} />,
 
     subNav: [
       {
         title: "List All",
         path: "/management/all-notice",
-        icon: <FaListUl />,
+        icon: <List size={16} />,
         cName: "sub-nav",
       },
       {
         title: "Send",
         path: "/management/send-notice",
-        icon: <RiPlayListAddLine />,
+        icon: <Plus size={16} />,
       },
     ],
   },

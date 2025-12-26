@@ -6,7 +6,7 @@ const SidebarLink = ({ to, onClick, active, children, hasSubnav }) => (
   <Link
     to={to}
     onClick={onClick}
-    className={`flex items-center justify-between w-full px-3 h-14 text-black text-lg no-underline hover:bg-slate-300 hover:border-l-4 hover:border-blue-500 ${!hasSubnav ? 'hover:bg-slate-300 hover:border-l-4 hover:border-blue-500' : ''} ${active ? 'bg-slate-300 border-l-4 border-blue-500' : 'bg-transparent'}`}
+    className={`flex items-center justify-between w-full px-4 h-12 text-gray-800 text-sm no-underline transition-colors ${active ? 'bg-gray-100' : 'bg-transparent'} hover:bg-gray-50 active:bg-gray-100`}
   >
     {children}
   </Link>
@@ -19,7 +19,7 @@ const SidebarLabel = ({ children }) => (
 const DropdownLink = ({ to, active, children }) => (
   <Link
     to={to}
-    className={`flex items-center h-12 pl-8 text-black text-lg no-underline hover:bg-slate-300 hover:border-l-4 hover:border-blue-500 ${active ? 'bg-slate-300 border-l-4 border-blue-500' : 'bg-transparent'}`}
+    className={`flex items-center h-10 pl-10 pr-4 text-gray-700 text-sm no-underline transition-colors ${active ? 'bg-gray-100' : 'bg-transparent'} hover:bg-gray-50 active:bg-gray-100`}
   >
     {children}
   </Link>
@@ -46,13 +46,13 @@ const SubMenu = ({ item, currentPath }) => {
         active={currentPath === item.path}
         hasSubnav={!!item.subNav}  // Pass whether it has subnav
       >
-        <div className="flex items-center">
-          {item.icon}
+        <div className="flex items-center min-w-0">
+          <span className="text-gray-500 shrink-0">{item.icon}</span>
           <SidebarLabel>
             {item.title}
           </SidebarLabel>
         </div>
-        <div>
+        <div className="text-gray-400 shrink-0">
           {item.subNav && subnav
             ? item.iconOpened
             : item.subNav
@@ -62,14 +62,14 @@ const SubMenu = ({ item, currentPath }) => {
       </SidebarLink>
 
       {subnav && (
-        <div className="bg-gray-200">
+        <div className="bg-white">
           {item.subNav.map((subItem, index) => (
             <DropdownLink
               to={subItem.path}
               key={index}
               active={currentPath === subItem.path}
             >
-              {subItem.icon}
+              <span className="text-gray-500 shrink-0">{subItem.icon}</span>
               <SidebarLabel>
                 {subItem.title}
               </SidebarLabel>

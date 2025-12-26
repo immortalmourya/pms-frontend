@@ -1,6 +1,6 @@
 // Navbar.jsx
 import React from 'react';
-import { FaBars } from 'react-icons/fa';
+import { Menu } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 function Navbar({ isSidebarVisible, toggleSidebar }) {
@@ -13,11 +13,11 @@ function Navbar({ isSidebarVisible, toggleSidebar }) {
   pageName = pageName.charAt(0).toUpperCase() + pageName.slice(1);
 
   return (
-    <div className={`h-20 sticky top-0 z-10 bg-white flex justify-start items-center border-b-2 border-gray-100 shadow-sm text-gray-500 transition-all duration-300 ${isSidebarVisible ? 'ml-60 px-4' : 'ml-0'}`}>
-      <button className="ml-4" onClick={toggleSidebar}>
-        <FaBars size={24} />
+    <div className={`h-16 sticky top-0 z-10 bg-white flex justify-start items-center border-b border-gray-100 text-gray-700 transition-all duration-300 ${isSidebarVisible ? 'ml-60 px-4' : 'ml-0 px-4'}`}>
+      <button className="rounded-md p-2 hover:bg-gray-100 active:bg-gray-200 transition-colors" onClick={toggleSidebar} aria-label="Toggle sidebar">
+        <Menu size={20} />
       </button>
-      <span className="ml-8 text-xl">
+      <span className="ml-4 text-lg font-medium text-gray-800 truncate">
         {pageName}
       </span>
     </div>
