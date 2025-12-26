@@ -602,7 +602,7 @@ function UserDetails() {
                     </div>
 
                     {/* past qualification  */}
-                    <div className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400 p-6 my-8">
+                    <div className="bg-white border border-gray-100 rounded-lg shadow-sm p-6 my-8">
                       <span className='text-2xl md:text-4xl'>Past Qualification</span>
                       <div className="grid grid-cols-1 md:grid-cols-3">
                         <div className="px-2 py-3 flex flex-col gap-2">
@@ -631,7 +631,7 @@ function UserDetails() {
                               disabled={!completeProfileReq && currentUserData.role !== 'superuser'}
                             >
                               <option disabled value="undefined" className='text-gray-400'>Enter Your SSC Board Name</option>
-                              <option value="Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)">Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)</option>
+                              <option value="Karnataka Secondary Education Examination Board (KSEEB)">Karnataka Secondary Education Examination Board (KSEEB)</option>
                               <option value="Central Board of Secondary Education (CBSE)">Central Board of Secondary Education (CBSE)</option>
                               <option value="Council for the Indian School Certificate Examinations (CISCE)">Council for the Indian School Certificate Examinations (CISCE)</option>
                               <option value="Other">Other</option>
@@ -715,7 +715,7 @@ function UserDetails() {
                               disabled={!completeProfileReq && currentUserData.role !== 'superuser'}
                             >
                               <option disabled value="undefined" className='text-gray-400'>Enter Your HSC Board Name</option>
-                              <option value="Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)">Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)</option>
+                              <option value="Karnataka Secondary Education Examination Board (KSEEB)">Karnataka Secondary Education Examination Board (KSEEB)</option>
                               <option value="Central Board of Secondary Education (CBSE)">Central Board of Secondary Education (CBSE)</option>
                               <option value="Council for the Indian School Certificate Examinations (CISCE)">Council for the Indian School Certificate Examinations (CISCE)</option>
                               <option value="Other">Other</option>

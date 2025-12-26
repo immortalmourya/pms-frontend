@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Toast from '../../components/Toast';
 import isAuthenticated from '../../utility/auth.utility';
+import { Briefcase } from 'lucide-react';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Signup() {
@@ -70,6 +71,11 @@ function Signup() {
     if (formData?.number?.length !== 10) return setError({ ...error, number: 'Number Length Should be 10 digital only!' })
 
     try {
+      if (!BASE_URL) {
+        setToastMessage('Backend URL is not configured. Please set VITE_BACKEND_URL and redeploy.');
+        setShowToast(true);
+        return;
+      }
       const response = await axios.post(`${BASE_URL}/student/signup`, formData);
       // console.log(response.data);
       setToastMessage("User Created Successfully! Now You Can Login.");
@@ -84,10 +90,9 @@ function Signup() {
       // after 3sec to go login page
       // setTimeout(() => navigate("../student/login"), 2000);
     } catch (error) {
-      if (error.response.data.msg) {
-        setToastMessage(error.response.data.msg);
-        setShowToast(true);
-      }
+      const msg = error?.response?.data?.msg || error?.message || 'Signup failed. Please try again.';
+      setToastMessage(msg);
+      setShowToast(true);
       console.log("Student Signup.jsx => ", error);
     }
   }
@@ -107,13 +112,14 @@ function Signup() {
         onClose={() => setShowToast(false)}
         message={toastMessage}
         delay={3000}
-        position="bottom-end"
       />
 
       <div className="flex justify-center items-center py-2 min-h-screen bg-gradient-to-r from-red-400 from-10% via-pink-300 via-40% to-purple-300 to-100% ">
         <form className="form-signin flex justify-center items-center flex-col gap-3 backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400 p-8 w-1/3 max-lg:w-2/3 max-md:w-3/4 max-[400px]:w-4/5" onSubmit={handleSubmit}>
           <div className='flex justify-center items-center flex-col'>
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-emerald-500 shadow-md mb-4" />
+            <div className="w-14 h-14 rounded-2xl bg-gray-900 text-white flex items-center justify-center shadow-sm mb-4">
+              <Briefcase size={22} />
+            </div>
             <h1 className="h3 mb-1 font-weight-normal">Student Sign Up</h1>
             <p className="text-sm text-gray-700">Create your account to get started</p>
           </div>

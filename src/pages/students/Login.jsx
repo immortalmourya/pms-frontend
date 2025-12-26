@@ -4,6 +4,7 @@ import axios from 'axios';
 import Toast from '../../components/Toast';
 import isAuthenticated from '../../utility/auth.utility';
 import { Button } from 'react-bootstrap';
+import { Briefcase } from 'lucide-react';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Login() {
@@ -87,13 +88,14 @@ function Login() {
         onClose={() => setShowToast(false)}
         message={toastMessage}
         delay={3000}
-        position="bottom-end"
       />
 
       <div className="flex justify-center items-center h-screen bg-gradient-to-r from-indigo-400 from-10% via-sky-300 via-40% to-emerald-500 to-100% ">
         <form className="form-signin flex justify-center items-center flex-col gap-3 backdrop-blur-md bg-white/30 border border-white/20 rounded-lg p-8 shadow shadow-red-400 w-1/3 max-lg:w-2/3 max-md:w-3/4 max-[400px]:w-4/5" onSubmit={handleSubmit}>
           <div className='flex justify-center items-center flex-col'>
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-emerald-500 shadow-md mb-4" />
+            <div className="w-14 h-14 rounded-2xl bg-gray-900 text-white flex items-center justify-center shadow-sm mb-4">
+              <Briefcase size={22} />
+            </div>
             <h1 className="h3 mb-1 font-weight-normal">Student Login</h1>
             <p className="text-sm text-gray-700">Sign in to continue</p>
           </div>

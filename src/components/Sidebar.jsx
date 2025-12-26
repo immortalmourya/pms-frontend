@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ChevronDown, LogOut, Settings, UserCircle2 } from 'lucide-react';
+import { Briefcase, ChevronDown, LogOut, Settings, UserCircle2 } from 'lucide-react';
 import axios from 'axios';
 import SubMenu from './Submenu';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
@@ -87,10 +87,12 @@ const Sidebar = ({ isSidebarVisible }) => {
 
   return (
     <>
-      <nav className={`bg-white w-64 h-screen z-20 flex flex-col fixed top-0 transition-transform duration-300 ${sidebar ? 'translate-x-0' : '-translate-x-full'} shadow-sm border-r border-gray-100 navbar-container`}>
+      <nav className={`bg-white w-64 h-[100dvh] z-20 flex flex-col fixed top-0 transition-transform duration-300 ${sidebar ? 'translate-x-0' : '-translate-x-full'} shadow-sm border-r border-gray-100 navbar-container`}>
         {/* Main Sidebar Logo and Name */}
         <div className="flex items-center px-4 py-4 gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gray-900" />
+          <div className="w-10 h-10 rounded-xl bg-gray-900 text-white flex items-center justify-center">
+            <Briefcase size={18} />
+          </div>
           <h1 className="text-lg font-semibold text-gray-900 truncate">
             {loadData.role === 'superuser' && <Link to="/admin/dashboard" className="no-underline text-black">Placement Portal</Link>}
             {loadData.role === 'management_admin' && <Link to="/management/dashboard" className="no-underline text-black">Placement Portal</Link>}
@@ -113,10 +115,10 @@ const Sidebar = ({ isSidebarVisible }) => {
         </div>
 
         {/* Bottom Menu */}
-        <div className="shrink-0 border-t border-gray-100">
+        <div className="relative shrink-0 border-t border-gray-100">
           {/* Dropdown Menu */}
           {dropdownOpen && (
-            <div className="w-full">
+            <div className="absolute bottom-full left-0 w-full border-t border-gray-100 bg-white shadow-sm max-h-48 overflow-y-auto">
               {/* Conditional rendering based on role */}
               {loadData.role === 'student' && (
                 <Link to={`../student/account`} className="flex items-center no-underline text-gray-700 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors">

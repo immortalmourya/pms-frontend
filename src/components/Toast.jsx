@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Toast, ToastContainer } from 'react-bootstrap';
 
-const CustomToast = ({ show, onClose, message, delay = 3000, position = 'bottom-end' }) => {
+const CustomToast = ({ show, onClose, message, delay = 3000, position = 'top-center' }) => {
   useEffect(() => {
     if (show) {
       const timer = setTimeout(() => {
@@ -11,8 +11,14 @@ const CustomToast = ({ show, onClose, message, delay = 3000, position = 'bottom-
     }
   }, [show, delay, onClose]);
 
+  const containerClassName = 'p-3';
+
   return (
-    <ToastContainer position={position} className="p-3 position-fixed bottom-0 end-0" style={{ zIndex: 1050 }}>
+    <ToastContainer
+      position={undefined}
+      className={containerClassName}
+      style={{ zIndex: 1050, position: 'fixed', top: 16, left: '50%', transform: 'translateX(-50%)' }}
+    >
       <Toast onClose={onClose} show={show} delay={delay} autohide>
         <Toast.Header>
           <strong className="me-auto text-blue-500">Notification</strong>
